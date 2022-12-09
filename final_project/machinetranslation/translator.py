@@ -11,6 +11,7 @@ apikey = os.environ['apikey']
 url = os.environ['url']
 VERSION = '2018-05-01'
 
+"""Defining Functions"""
 # creating instance of the IBM Watson Language translator
 authenticator = IAMAuthenticator(apikey=apikey)
 language_translator = LanguageTranslatorV3(
@@ -21,15 +22,15 @@ language_translator = LanguageTranslatorV3(
 language_translator.set_service_url(url)
 
 # creating a function to translate from English to French
-def englishToFrench(englishText):
+def englishToFrench(english_text):
     #write the code here
-    translation = language_translator.translate(text=englishText, model_id='en-fr').get_result()
-    frenchText = translation['translations'][0]['translation']
-    return frenchText
+    translation = language_translator.translate(text=english_text, model_id='en-fr').get_result()
+    french_text = translation['translations'][0]['translation']
+    return french_text
 
 # creating a function to translate from French to English
-def frenchToEnglish(frenchText):
+def frenchToEnglish(french_text):
     #write the code here
-    translation = language_translator.translate(text=frenchText, model_id='fr-en').get_result()
-    englishText = translation['translations'][0]['translation']
-    return englishText
+    translation = language_translator.translate(text=french_text, model_id='fr-en').get_result()
+    english_text = translation['translations'][0]['translation']
+    return english_text
